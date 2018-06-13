@@ -1,0 +1,25 @@
+{
+  "connection": "default",
+  "collectionName": "jp_adminusers",
+  "info": {
+    "name": "adminusers",
+    "description": "jinpeng admin system access users"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "id":{
+      "type": "String"
+    },
+    "username": {
+      "type": "String"
+    },
+    "date_added": {
+      "type": "String"
+    },
+    "password": {
+      "type": "String"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "method": ["POST", "PUT"],
+      "path": "/adminuser/:id",
+      "handler": "Adminusers.createOrUpdate"
+    },
+    {
+      "method": "GET",
+      "path": "/adminusers/:id",
+      "handler": "Adminusers.find"
+    },
+    {
+      "method": "GET",
+      "path": "/adminusers",
+      "handler": "Adminusers.list"
+    }
+  ]
+}
