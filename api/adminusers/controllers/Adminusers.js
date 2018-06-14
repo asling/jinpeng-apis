@@ -13,7 +13,16 @@ module.exports = {
   //   }
   // }
   createOrUpdate: async (ctx, next) => {
-  	console.log("add ctx",ctx);
+  	console.log("add body",ctx.request.body);
+    Adminusers.findOne({
+      id: 1,
+    }).exec((err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(data);
+    })
+    
   	ctx.send("ok");
   },
 

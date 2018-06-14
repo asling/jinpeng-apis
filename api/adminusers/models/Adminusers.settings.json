@@ -10,7 +10,9 @@
   },
   "attributes": {
     "id":{
-      "type": "String"
+      "type": "integer",
+      "unique": true,
+      "required": true
     },
     "username": {
       "type": "String"

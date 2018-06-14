@@ -31,9 +31,10 @@ module.exports = {
   // Before creating a value.
   // Fired before an `insert` query.
   beforeCreate: async (model, attrs, options) => {
-    const passwordHashed = await strapi.api.adminusers.services.adminusers.hashPassword(model.attributes.password);
+    console.log("model",model);
+    const passwordHashed = await strapi.api.adminusers.services.adminusers.hashPassword(model.password);
     console.log("passwordHashed",passwordHashed);
-    // model.set('password', passwordHashed);
+    model.set('password', passwordHashed);
   },
 
   // After creating a value.

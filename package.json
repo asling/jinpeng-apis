@@ -19,12 +19,12 @@
     "eslint-plugin-react": "^6.8.0"
   },
   "dependencies": {
+    "knex": "latest",
     "lodash": "4.x.x",
+    "pg": "7.4.3",
     "strapi": "3.0.0-alpha.12.2",
     "strapi-bookshelf": "3.0.0-alpha.12.2",
-    "strapi-knex": "3.0.0-alpha.12.2",
-    "knex": "latest",
-    "pg": "7.4.3"
+    "strapi-knex": "3.0.0-alpha.12.2"
   },
   "author": {
     "name": "chenyuwen",
