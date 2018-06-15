@@ -1,3 +1,4 @@
+const md5 = require('md5');
 'use strict';
 
 /**
@@ -9,6 +10,9 @@ module.exports = {
   //   return isUserOnline(arg1, arg2);
   // }
   hashPassword: (password) => {
-  	return password + ': hashPassword';
-  }
+  	return md5(password);
+  },
+  // dateCreated: (field) => {
+  // 	return new Date().
+  // }
 };

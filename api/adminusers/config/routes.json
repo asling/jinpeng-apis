@@ -1,9 +1,14 @@
 {
   "routes": [
     {
-      "method": ["POST", "PUT"],
+      "method": "PUT",
       "path": "/adminuser/:id",
-      "handler": "Adminusers.createOrUpdate"
+      "handler": "Adminusers.update"
+    },
+    {
+      "method": "POST",
+      "path": "/adminuser/",
+      "handler": "Adminusers.create"
     },
     {
       "method": "GET",

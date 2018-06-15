@@ -21,6 +21,7 @@
   "dependencies": {
     "knex": "latest",
     "lodash": "4.x.x",
+    "md5": "^2.2.1",
     "pg": "7.4.3",
     "strapi": "3.0.0-alpha.12.2",
     "strapi-bookshelf": "3.0.0-alpha.12.2",
