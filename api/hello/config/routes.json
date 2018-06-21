@@ -3,7 +3,12 @@
     {
       "method": "GET",
       "path": "/hello",
-      "handler": "Hello.index"
+      "handler": "Hello.index",
+      "config": {
+	        "policies": [
+	          "isAuthenticated"
+	        ]
+    	}
     }
   ]
 }
