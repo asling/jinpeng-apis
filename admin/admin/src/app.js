@@ -44,7 +44,6 @@ const plugins = (() => {
   }
 })();
 /* eslint-enable */
-
 // Create redux store with history
 const basename = strapi.remoteURL.replace(window.location.origin, '');
 const history = createHistory({

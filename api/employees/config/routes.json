@@ -1,0 +1,41 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/employees",
+      "handler": "Employees.find"
+    },
+    {
+      "method": "GET",
+      "path": "/employees/:_id",
+      "handler": "Employees.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/employees",
+      "handler": "Employees.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/employees/:_id",
+      "handler": "Employees.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/employees/:_id",
+      "handler": "Employees.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -83,6 +83,7 @@ export class AdminPage extends React.Component { // eslint-disable-line react/pr
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("nextProps",nextProps);
     if (nextProps.location.pathname !== this.props.location.pathname) {
       this.checkLogin(nextProps);
 
@@ -97,6 +98,7 @@ export class AdminPage extends React.Component { // eslint-disable-line react/pr
   }
 
   checkLogin = (props, skipAction = false) => {
+    console.log("props",props);
     if (props.hasUserPlugin && this.isUrlProtected(props) && !auth.getToken()) {
       const endPoint = this.hasAdminUser(props) ? 'login': 'register';
       this.props.history.push(`/plugins/users-permissions/auth/${endPoint}`);

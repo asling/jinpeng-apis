@@ -1,10 +1,8 @@
 module.exports = async (ctx, next) => {
   let role;
-
   if (ctx.request && ctx.request.header && ctx.request.header.authorization) {
     try {
       const { _id, id } = await strapi.plugins['users-permissions'].services.jwt.getToken(ctx);
-
       if ((id || _id) === undefined) {
         throw new Error('Invalid token: Token did not contain required fields');
       }

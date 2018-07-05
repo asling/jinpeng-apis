@@ -121,6 +121,8 @@ module.exports = {
       return acc;
     }, { controllers: {} });
 
+    console.log("appControllers",appControllers);
+
     const pluginsPermissions = Object.keys(strapi.plugins).reduce((acc, key) => {
       const initialState = {
         controllers: {}
@@ -248,11 +250,12 @@ module.exports = {
         const isRegister = obj.action === 'register' && obj.controller === 'auth' && obj.type === 'users-permissions' && role.type === 'public';
         const isPassword = obj.action === 'forgotpassword' && obj.controller === 'auth' && obj.type === 'users-permissions' && role.type === 'public';
         const isNewPassword = obj.action === 'changepassword' && obj.controller === 'auth' && obj.type === 'users-permissions' && role.type === 'public';
+        const isApplicationPermissions = obj.type === 'application' && role.type === 'authenticated';
         const isInit = obj.action === 'init' && obj.controller === 'userspermissions';
         const isMe = obj.action === 'me' && obj.controller === 'user' && obj.type === 'users-permissions';
         const isReload = obj.action === 'autoreload';
-        const enabled = isCallback || isRegister || role.type === 'root' || isInit || isPassword || isNewPassword || isMe || isReload || isConnect;
-
+        const enabled = isCallback || isRegister || role.type === 'root' || isInit || isPassword || isNewPassword || isMe || isReload || isConnect || isApplicationPermissions;
+        console.log("enabled",enabled);
         return Object.assign(obj, { enabled, policy: '' });
       };
 
@@ -264,7 +267,7 @@ module.exports = {
       const toRemove = _.difference(actions, currentActions).map(splitted);
       const toAdd = (permissions < 1 ? currentActions : _.difference(currentActions, actions))
         .map(splitted);
-
+        console.log("toAdd",toAdd);
       // Execute request to update entries in database for each role.
       await Promise.all(
         roles.map(role =>

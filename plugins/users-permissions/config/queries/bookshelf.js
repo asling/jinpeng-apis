@@ -38,7 +38,6 @@ module.exports = {
 
   findOne: async function (params, populate) {
     const primaryKey = params[this.primaryKey] || params._id;
-
     if (primaryKey) {
       params = {
         [this.primaryKey]: primaryKey

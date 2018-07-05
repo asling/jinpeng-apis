@@ -22,10 +22,13 @@
     "knex": "latest",
     "lodash": "4.x.x",
     "md5": "^2.2.1",
+    "node-cache": "^4.2.0",
     "pg": "7.4.3",
     "strapi": "3.0.0-alpha.12.2",
     "strapi-bookshelf": "3.0.0-alpha.12.2",
-    "strapi-knex": "3.0.0-alpha.12.2"
+    "strapi-knex": "3.0.0-alpha.12.2",
+    "superagent": "^3.8.3",
+    "we-jssdk": "^1.0.0"
   },
   "author": {
     "name": "chenyuwen",

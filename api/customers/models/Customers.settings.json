@@ -1,0 +1,46 @@
+{
+  "connection": "default",
+  "collectionName": "jp_customers",
+  "info": {
+    "name": "jp_customers",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "id":{
+      "type": "integer",
+      "unique": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "configurable": false
+    },
+    "phone": {
+      "type": "string",
+      "configurable": false
+    },
+    "wechat_number": {
+      "type": "string",
+      "required": true,
+      "configurable": false
+    },
+    "employee_id": {
+      "model": "employees",
+      "configurable": false
+    },
+    "expenses": {
+      "collection": "expenses",
+      "via": "customer_id",
+      "configurable": false
+    },
+    "orders": {
+      "collection": "orders",
+      "via": "customer_id",
+      "configurable": false
+    }
+  }
+}

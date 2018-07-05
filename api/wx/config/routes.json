@@ -1,0 +1,37 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/wx/auth",
+      "handler": "Wx.init",
+      "excludes": ["plugins.users-permissions.permissions"],
+      "config": {
+          "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/wx/test",
+      "handler": "Wx.testOne",
+      "excludes": ["plugins.users-permissions.permissions"],
+      "config": {
+          "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/wx/createMenu",
+      "handler": "Wx.createMenu"
+    },
+    {
+      "method": "GET",
+      "path": "/wx/:id",
+      "handler": "Adminusers.find"
+    },
+    {
+      "method": "GET",
+      "path": "/wx",
+      "handler": "Adminusers.list"
+    }
+  ]
+}

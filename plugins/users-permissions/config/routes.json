@@ -53,8 +53,7 @@
       "path": "/roles",
       "handler": "UsersPermissions.getRoles",
       "config": {
-        "policies": [],
-        "prefix": ""
+        "policies": []
       }
     },
     {

@@ -9,7 +9,8 @@ const _ = require('lodash');
 module.exports = {
   fetchAll: async (params, query) => {
     const { limit, skip = 0, sort, query : request, queryAttribute, source, page, populate = [] } = query; // eslint-disable-line no-unused-vars
-
+    console.log("params.model", params.model);
+    console.log("source",source);
     // Find entries using `queries` system
     return await strapi.query(params.model, source).find({
       limit,

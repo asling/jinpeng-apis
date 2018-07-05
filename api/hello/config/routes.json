@@ -3,12 +3,20 @@
     {
       "method": "GET",
       "path": "/hello",
-      "handler": "Hello.index",
+      "handler": "Hello.index"
+    },
+    {
+      "method": "GET",
+      "path": "/show",
+      "handler": "Hello.show"
+    },
+    {
+      "method": "GET",
+      "path": "/test77",
+      "handler": "Hello.test77",
       "config": {
-	        "policies": [
-	          "isAuthenticated"
-	        ]
-    	}
+          "policies": []
+      }
     }
   ]
 }

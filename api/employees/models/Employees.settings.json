@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "jp_employees",
+  "info": {
+    "name": "jp_employees",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "id":{
+      "type": "integer",
+      "unique": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "configurable": false,
+      "required": true
+    },
+    "title": {
+      "type": "integer",
+      "configurable": false
+    },
+    "phone": {
+      "type": "string",
+      "configurable": false
+    },
+    "customers": {
+      "collection": "customers",
+      "via": "employee_id",
+      "configurable": false
+    }
+  }
+}

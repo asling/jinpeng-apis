@@ -17,7 +17,12 @@ module.exports = strapi => {
       _.forEach(strapi.config.routes, value => {
         if (_.get(value.config, 'policies')) {
           value.config.policies.unshift('plugins.users-permissions.permissions');
+          const excludes = _.get(value, 'excludes') ? _.isArray(value.excludes) ? value.excludes : [value.excludes] : [];
+          _.remove(value.config.policies, function(item){
+            return _.indexOf(excludes, item, 0) > -1;
+          });
         }
+        
       });
 
       if (strapi.plugins) {

@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/customers",
+      "handler": "Customers.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/customers/:_id",
+      "handler": "Customers.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/customer",
+      "handler": "Customers.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/customers/:_id",
+      "handler": "Customers.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/customers/:_id",
+      "handler": "Customers.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
