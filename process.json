@@ -1,0 +1,6 @@
+{
+  "apps" : [{
+    "script": "./startscript.js",
+	"watch" : true
+  }]
+}

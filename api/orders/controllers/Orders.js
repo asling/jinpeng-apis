@@ -15,7 +15,13 @@ module.exports = {
    */
 
   find: async (ctx) => {
-    return strapi.services.orders.fetchAll(ctx.params,ctx.query);
+    const query = ctx.request.query;
+    const formData = Object.keys(query).map( item => {
+      if(item === 'name') return { type: 'where', key: item, value: query.item };
+      if(item === 'offset') return { type: 'fetch', key: item, value: query.item };
+    });
+    console.log("formData",formData);
+    ctx.body = await strapi.services.orders.fetchAll(formData);
   },
 
   /**

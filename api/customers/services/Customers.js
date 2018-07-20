@@ -66,14 +66,16 @@ module.exports = {
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Customers.associations.map(ast => ast.alias));
-    const data = _.omit(values, Customers.associations.map(ast => ast.alias));
+    const now = new Date();
+    return await Customers({
+      name: values.name,
+      phone: values.phone,
+      wechat_number: values.wechat_number,
+      employee_id: values.employee_id,
+      create_at: now,
+      update_at: now,
+    }).save(null, {method: 'insert'})
 
-    // Create entry with no-relational data.
-    const entry = await Customers.create(data);
-
-    // Create relational data and return the entry.
-    return Customers.updateRelations({ id: entry.id, values: relations });
   },
 
   /**

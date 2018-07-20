@@ -17,16 +17,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  fetchAll: (params,query) => {
+  fetchAll: async (query) => {
     // Convert `params` object to filters compatible with Mongo.
-    const { recent, recentNum } = query;
-    return Orders
-      .forge()
-      .orderBy("id","desc")
-      .fetchPage({
-        limit: recent ? recentNum : false ,
-        withRelated: ['customer_id']
-      });
+    const whereObj = {}, fetchObj = {};
+    query.map( item => {
+      if(item.type === 'where') whereObj[item.key] = item.value;
+      if(item.type === 'fetch') fetchObj[item.key] = item.value;
+    });
+    return Expenses
+      .where(whereObj)
+      .fetchAll(Object.assign({},fetchObj,{withRelated: ['customer_id']}));
   },
 
   /**

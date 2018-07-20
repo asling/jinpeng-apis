@@ -16,7 +16,12 @@ module.exports = {
 
   find: async (ctx) => {
     console.log("ctx.request.query",ctx.request.query);
-    ctx.body = await strapi.services.employees.fetchAll(ctx.request.query);
+    const query = ctx.request.query;
+    const formData = Object.keys(query).map( item => {
+      if(item === 'name') return { type: 'where', key: item, value: query.item };
+    });
+    console.log("formData",formData);
+    ctx.body = await strapi.services.employees.fetchAll(formData);
   },
 
   /**
@@ -26,7 +31,7 @@ module.exports = {
    */
 
   findOne: async (ctx) => {
-    if (!ctx.params._id.match(/^[0-9a-fA-F]{24}$/)) {
+    if (!ctx.params._id.match(/^[0-9a-fA-F]+$/)) {
       return ctx.notFound();
     }
 
@@ -40,7 +45,7 @@ module.exports = {
    */
 
   create: async (ctx) => {
-    return strapi.services.employees.add(ctx.request.body);
+    ctx.body = await strapi.services.employees.add(ctx.request.body);
   },
 
   /**
@@ -50,7 +55,7 @@ module.exports = {
    */
 
   update: async (ctx, next) => {
-    return strapi.services.employees.edit(ctx.params, ctx.request.body) ;
+    ctx.body = await strapi.services.employees.edit(ctx.params, ctx.request.body) ;
   },
 
   /**

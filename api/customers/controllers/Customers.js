@@ -39,6 +39,8 @@ module.exports = {
    */
 
   create: async (ctx) => {
+    // const employee_name = ctx.request.body && ctx.request.body.employee_name;
+    // const employee_id = await strapi.services.employees.queryIdByName()
     return strapi.services.customers.add(ctx.request.body);
   },
 

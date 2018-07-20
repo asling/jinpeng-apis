@@ -9,7 +9,8 @@
     "start": "node server.js",
     "strapi": "node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
-    "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js",
+    "prod": "cross-env NODE_ENV=production npm start"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -19,10 +20,12 @@
     "eslint-plugin-react": "^6.8.0"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "knex": "latest",
     "lodash": "4.x.x",
     "md5": "^2.2.1",
     "node-cache": "^4.2.0",
+    "node-cmd": "^3.0.0",
     "pg": "7.4.3",
     "strapi": "3.0.0-alpha.12.2",
     "strapi-bookshelf": "3.0.0-alpha.12.2",

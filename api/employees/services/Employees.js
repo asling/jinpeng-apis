@@ -13,15 +13,19 @@ module.exports = {
 
   /**
    * Promise to fetch all employees.
-   *
+   *  query {Array} item => { type: where| orderBy... , key: , value: , }
    * @return {Promise}
    */
 
   fetchAll: async (query) => {
     // Convert `params` object to filters compatible with Mongo.
     const { name } = query;
+    const whereObj = {};
+    query.map( item => {
+      if(item.type === 'where') whereObj[item.key] = item.value;
+    });
     return Employees
-      .where({name})
+      .where(whereObj)
       .fetchAll();
   },
 
@@ -33,21 +37,10 @@ module.exports = {
 
   fetch: (params) => {
     // Select field to populate.
-    const { recent, recentNum, page, name } = query;
-    if(name){
-      return Employees
-      .where({name})
-      .orderBy("id","desc")
+    const id = params._id;
+    return Employees
+      .where({id})
       .fetch();
-    }else{
-      return Employees
-      .forge()
-      .orderBy("id","desc")
-      .fetchPage({
-        limit: recent ? recentNum : false ,
-        page,
-      });
-    }
     
   },
 
@@ -57,16 +50,16 @@ module.exports = {
    * @return {Promise}
    */
 
-  add: async (values) => {
+  add: async (body) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Employees.associations.map(ast => ast.alias));
-    const data = _.omit(values, Employees.associations.map(ast => ast.alias));
-
-    // Create entry with no-relational data.
-    const entry = await Employees.create(data);
-
-    // Create relational data and return the entry.
-    return Employees.updateRelations({ id: entry.id, values: relations });
+    const now = new Date();
+    return new Employees({
+      name: body.name,
+      phone: body.phone,
+      title: body.title,
+      updated_at: now,
+      created_at: now,
+    }).save(null, {method: 'insert'});
   },
 
   /**
@@ -75,16 +68,17 @@ module.exports = {
    * @return {Promise}
    */
 
-  edit: async (params, values) => {
+  edit: async (params, body) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Employees.associations.map(a => a.alias));
-    const data = _.omit(values, Employees.associations.map(a => a.alias));
-
-    // Update entry with no-relational data.
-    const entry = await Employees.update(params, data, { multi: true });
-
-    // Update relational data and return the entry.
-    return Employees.updateRelations(Object.assign(params, { values: relations }));
+    const now = new Date();
+    const id = params._id;
+    return new Employees({
+      name: body.name,
+      phone: body.phone,
+      title: body.title,
+      updated_at: now,
+      id,
+    }).save(null, {method: 'update'});
   },
 
   /**
